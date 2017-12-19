@@ -1,0 +1,16 @@
+<BuildLog>
+  <author>Harika</author>
+  <test name="test">
+    <toolChain>C#</toolChain>
+    <testDriver>TestDriver2.cs</testDriver>
+    <status>Failed</status>
+    <Message>TestDriver2.cs(43,7): error CS0246: The type or namespace name 'CodeTest3' could not be found (are you missing a using directive or an assembly reference?)
+</Message>
+  </test>
+  <test name="test">
+    <toolChain>C#</toolChain>
+    <testDriver>TestDriver3.cs</testDriver>
+    <status>Success</status>
+    <Message>Errors:0 Warnings: 0</Message>
+  </test>
+</BuildLog>

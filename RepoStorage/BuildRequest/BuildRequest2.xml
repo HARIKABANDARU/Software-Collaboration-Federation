@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<BuildRequest>
+  <author>Harika</author>
+    <test name="First Test">
+	<toolChain>C#</toolChain>
+    <testDriver>TestDriver2.cs</testDriver>
+    <tested>CodeToTested2.cs</tested>
+	<tested>CodeToTested3.cs</tested>
+  </test> 
+</BuildRequest>

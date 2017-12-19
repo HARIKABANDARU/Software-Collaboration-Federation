@@ -1,0 +1,11 @@
+<BuildLog>
+  <author> Harika </author>
+  <test name="first">
+    <toolChain>CPP</toolChain>
+    <testDriver>Happy.cpp</testDriver>
+    <status>Failed</status>
+    <Message>'cl' is not recognized as an internal or external command,
+operable program or batch file.
+</Message>
+  </test>
+</BuildLog>

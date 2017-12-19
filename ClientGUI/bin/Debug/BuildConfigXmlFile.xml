@@ -1,0 +1,28 @@
+<BuildConfiguration>
+<author name= "Harika"/>
+<Client>
+<endpoint>http://localhost:9060/IMessagePassingComm</endpont>
+<port number=9060/>
+</Client>
+
+<Repository>
+<endpoint>http://localhost:9070/IMessagePassingComm</endpoint>
+<Port number=9070/>
+</Repository>
+
+<MotherBuilder>
+<endpoint>http://localhost:9080/IMessagePassingComm</endpoint>
+<Port number=9080/>
+<MaxChildBuilders number =8 />
+</MotherBuilder>
+
+<BuildServer startsFrom="9081">
+<endpoint>http://localhost:9081/IMessagePassingComm</endpoint>
+<Port number = 9081 />
+</BuildServer>
+
+<TestHarness>
+<endpoint>http://localhost:9090/IMessagePassingComm</endpoint>
+<Port number =9090/>
+</TestHarness>
+</BuildConfiguration>

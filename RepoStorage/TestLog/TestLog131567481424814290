@@ -1,0 +1,9 @@
+<TestLog>
+  <author>Harika</author>
+  <test name="test">
+    <toolChain>C#</toolChain>
+    <testDriver>TestDriver3.dll</testDriver>
+    <status />
+    <Message>Object reference not set to an instance of an object.</Message>
+  </test>
+</TestLog>

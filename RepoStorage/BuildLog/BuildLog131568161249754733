@@ -1,0 +1,9 @@
+<BuildLog>
+  <author>Harika</author>
+  <test name="First Test">
+    <toolChain>C#</toolChain>
+    <testDriver>TestDriver2.cs</testDriver>
+    <status>Success</status>
+    <Message></Message>
+  </test>
+</BuildLog>

@@ -1,0 +1,7 @@
+C:\Users\Harika\source\repos\Project4\TestInterfaces\bin\Debug\TestInterfaces.dll.config
+C:\Users\Harika\source\repos\Project4\TestInterfaces\bin\Debug\TestInterfaces.dll
+C:\Users\Harika\source\repos\Project4\TestInterfaces\bin\Debug\TestInterfaces.pdb
+C:\Users\Harika\source\repos\Project4\TestInterfaces\obj\Debug\TestInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\Harika\source\repos\Project4\TestInterfaces\obj\Debug\TestInterfaces.dll
+C:\Users\Harika\source\repos\Project4\TestInterfaces\obj\Debug\TestInterfaces.pdb
+C:\Users\Harika\source\repos\Project4\TestInterfaces\obj\Debug\TestInterfaces.csprojResolveAssemblyReference.cache

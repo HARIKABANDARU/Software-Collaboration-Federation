@@ -1,0 +1,7 @@
+C:\Users\Harika\source\repos\Project4\XmlManager\bin\Debug\XmlManager.exe.config
+C:\Users\Harika\source\repos\Project4\XmlManager\bin\Debug\XmlManager.exe
+C:\Users\Harika\source\repos\Project4\XmlManager\bin\Debug\XmlManager.pdb
+C:\Users\Harika\source\repos\Project4\XmlManager\obj\Debug\XmlManager.csproj.CoreCompileInputs.cache
+C:\Users\Harika\source\repos\Project4\XmlManager\obj\Debug\XmlManager.exe
+C:\Users\Harika\source\repos\Project4\XmlManager\obj\Debug\XmlManager.pdb
+C:\Users\Harika\source\repos\Project4\XmlManager\obj\Debug\XmlManager.csprojResolveAssemblyReference.cache

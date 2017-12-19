@@ -1,0 +1,16 @@
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MotherBuildServer.exe.config
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MotherBuildServer.exe
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MotherBuildServer.pdb
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\Environment.dll
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\IMessagePassingFederationCommServices.exe
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MessagePassingFederationCommServices.exe
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\Environment.pdb
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\Environment.dll.config
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\IMessagePassingFederationCommServices.pdb
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\IMessagePassingFederationCommServices.exe.config
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MessagePassingFederationCommServices.pdb
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\bin\Debug\MessagePassingFederationCommServices.exe.config
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\obj\Debug\MotherBuildServer.csprojResolveAssemblyReference.cache
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\obj\Debug\MotherBuildServer.csproj.CoreCompileInputs.cache
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\obj\Debug\MotherBuildServer.exe
+C:\Users\Harika\source\repos\Project4\MotherBuildServer\obj\Debug\MotherBuildServer.pdb

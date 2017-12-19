@@ -1,0 +1,259 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////
+//  MainWindow.xaml   -  Provide capability to view test or build logs    //
+//  Language:         Visual C#  2017                                         //
+//  Platform:         Lenovo Z580 Windows 10                                  //
+//  Application :     FederationComm , FL17                                   //
+//  Author      :     Harika Bandaru, Syracuse University                     //
+//                    hbandaru@syr.edu (936)-242-5972)                        //
+////////////////////////////////////////////////////////////////////////////////-->
+
+<!--  Purpose:
+  Can start the spawn process pool on command. Can send BuildRequest Selected by the client to 
+  MotherBuildServer.
+    Build Process:
+  ===============
+   Required files:
+   ================
+   MainWindow.xaml.cs; App.xaml; RequestCreation.xaml; RequestCreation.xaml.cs;
+    -->
+
+<Window x:Class="BuildServerFederation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BuildServerFederation"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        Closed="Window_Closed"
+        Title="Project #4 Client" Height="750" Width="750">
+    <Window.Resources>
+        <!-- 
+    /////////////////////////////////////////////////////////////////////////////////////
+    // MainWindow.xaml - Demonstates the Diectory structure in WPF App                //
+    // ver 2.0                                                                       // 
+    // Author : Harika Bandaru, Syracuse University                                  //
+    // Source : Jim Fawcett, CSE681 - Software Modeling and Analysis, Fall 2017     //
+    //////////////////////////////////////////////////////////////////////////////////
+    -->
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DarkSlateBlue" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="DarkSlateBlue" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="DarkSlateBlue" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="Foreground" Value="DarkSlateBlue" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border Padding="10" Background="#ddd" BorderThickness="0 4 0 0" BorderBrush="DarkSlateBlue">
+            <TabControl>
+                <TabItem Name="Local" Header="Navigation">
+
+                    <!--- define top-level grid with four cells: repodirectories; buildrequest folder files
+                    list of files in buildlog folder list of files in testlog folder-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- define view for directories in repository storage -->
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30" x:Name="repoDirectory" Foreground="DarkSlateBlue" FontWeight="bold">RepoDirectories</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="localTop" Width="118" Height="25" Click="repoDirectoriesClick" Margin="0,2">Get Repo Dirs</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" x:Name="repoDirectories" MouseDoubleClick="repoDirectories_MouseDoubleClick"></ListBox>
+                        </Grid>
+
+                        <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" Background="#ddd"></GridSplitter>
+
+                        <!-- define view for list of files present in buildlog folder -->
+                        <Grid Grid.Column="0" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Test Log</Label>
+                                <Label Width="10"></Label>
+
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="testLogFiles" MouseDoubleClick="testLogFile_MouseDoubleClick"></ListBox>
+                        </Grid>
+
+                        <!-- define view for list of files present in buildrequest folder -->
+                        <Grid Grid.Column="2" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Select Build Request</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="RemoteTop" Width="176" Height="25" Click="sendClick" >Send Selected Requests</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="buildRequestFiles" SelectionMode="Multiple" MouseDoubleClick="requestFile_MouseDoubleClick"></ListBox>
+                        </Grid>
+
+                        <GridSplitter Grid.Column="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Stretch" Background="#ddd"></GridSplitter>
+
+                        <!-- define view for list of files present in buildlog folder -->
+                        <Grid Grid.Column="2" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Build Log</Label>
+                                <Label Width="10"></Label>
+
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="buildLogFiles" MouseDoubleClick="buildLogFiles_MouseDoubleClick"></ListBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Name="Remote" Header="Create Build Request">
+
+                    <!--- define top-level grid with four cells: repository directories & build request folder & build log folder * build request folder -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- define view for browse capability for test drivers in the repository storage -->
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30" x:Name="testDriver" Foreground="DarkSlateBlue" FontWeight="bold">Test Drivers</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="td" Width="120" Click="testDriversClick" >Browse Test Drivers</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" x:Name="testDrivers" MouseDoubleClick="testDrivers_MouseDoubleClick"></ListBox>
+                        </Grid>
+
+                        <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" Background="#ddd"></GridSplitter>
+
+                        <!-- define view to show added tests in the test block -->
+                        <Grid Grid.Column="0" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Added Tests</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="AddTest" Width="70" Height="25" Click="addtestClick">Add Test</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="addtest" ></ListBox>
+                        </Grid>
+
+                        <!-- define view for to display test cases to browse the test cases -->
+                        <Grid Grid.Column="2" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Test Cases</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="addTestCases" Width="125" Click="addtestCase" >Browse Test Cases</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="testcase" SelectionMode="Multiple" MouseDoubleClick="testCase_MouseDoubleClick"></ListBox>
+                        </Grid>
+
+                        <GridSplitter Grid.Column="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Stretch" Background="#ddd"></GridSplitter>
+
+                        <!-- create the build request file and store in the repository; create and send the build request to mother builder -->
+                        <Grid Grid.Column="2" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+                                <Label Height="30">Created Build Request</Label>
+                                <Label Width="10"></Label>
+                                <Button Name="RemoteUp" Width="40" Height="25" Click="create">Create</Button>
+                                <Label Width="10"></Label>
+                                <Button Name="send" Width="96" Height="25" Click="createAndSend" Margin="0,2">Create#Send</Button>
+                            </StackPanel>
+                            <ListBox Grid.Row="1" Name="buildRequest"></ListBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="results">
+                    <TabItem.Header>
+                        <Label Content="Start View Results"
+                               MouseLeftButtonDown="loadConfigFile"/>
+                    </TabItem.Header>
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" Name="col1" />
+                                <ColumnDefinition Width="*" Name="col2" />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Name="numberofProcess" IsEditable="False" >
+                                <ComboBoxItem  Name="pro1" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem  Name="pro2"></ComboBoxItem>
+                            </ComboBox>
+                            <Button Name="startProcessPool" Content="Start Process Pool" Height="30" Click="startButton_Click" Grid.Column="1" />
+                        </Grid>
+                        <!-- A text block to display results. -->
+                        <Grid DockPanel.Dock="Bottom">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" Name="col0" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="textBlock1" Text="" 
+                 VerticalAlignment="Center" HorizontalAlignment="Left" 
+                 Width="{Binding Path=Width, ElementName=col0}" Margin="30" Grid.Column="0" />
+
+                        </Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ListBox Name="listBox1" />
+                        </ScrollViewer>
+                    </DockPanel>
+                </TabItem>
+
+
+            </TabControl>
+        </Border>
+    </Grid>
+
+</Window>

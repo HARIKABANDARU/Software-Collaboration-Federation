@@ -1,0 +1,7 @@
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\bin\Debug\IMessagePassingFederationCommServices.exe.config
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\bin\Debug\IMessagePassingFederationCommServices.exe
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\bin\Debug\IMessagePassingFederationCommServices.pdb
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\obj\Debug\IMessagePassingFederationCommServices.csproj.CoreCompileInputs.cache
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\obj\Debug\IMessagePassingFederationCommServices.exe
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\obj\Debug\IMessagePassingFederationCommServices.pdb
+C:\Users\Harika\source\repos\Project4\IMessagePassingFederationCommServices\obj\Debug\IMessagePassingFederationCommServices.csprojResolveAssemblyReference.cache
